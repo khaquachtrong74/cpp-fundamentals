@@ -215,7 +215,7 @@ class HashTable{
     void push(T val){
         int idx = hashFunction(val);
         while(table[idx] != -1){
-            idx = (idx+1)%MATERIAL;
+            idx = (idx+1)%MATERIAL; // xử lý theo kiểu dò tuyến tính
         }
         table[idx] = val;
     }
