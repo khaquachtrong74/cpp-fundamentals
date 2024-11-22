@@ -24,16 +24,16 @@ public:
     }
     void view()
     {
-        std::cout << std::setfill(' ') << std::endl;
+        std::cout << std::setfill(' ') << std::endl; // Đảm bảo khoảng cách không bị lỗi
         for (const auto &row : table)
         {
             for (const auto &cell : row)
             {
-                std::cout << std::setw(30) << std::right << cell;
+                std::cout << std::setw(20) << std::left << cell; // Sử dụng setw cho mỗi ô
             }
             std::cout << std::endl;
         }
-        // std::cout<<std::setw(30)<<std::setfill('-')<<std::setw(60)<<""<<std::setfill(' ')<<std::endl;
+        std::cout << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
     }
     void addTask()
     {
@@ -102,7 +102,7 @@ int main()
     while (true)
     {
         system("cls");
-        
+
         test.view();
         menu();
         std::cin >> luaChon;
