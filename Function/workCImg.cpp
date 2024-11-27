@@ -1,7 +1,7 @@
 #include "CImg/CImg.h"
 #include <string>
 #include <iostream>
-
+#include <fstream>
 using namespace cimg_library;
 
 class ImageHandler
@@ -12,14 +12,18 @@ private:
     static const int DEFAULT_HEIGHT = 600;
     static const int DEFAULT_CHANNELS = 3; // RGB
     static const int DEFAULT_DEPTH = 1;    // 8-bit per channel
-    static const int MIN_WIDTH = 32;
-    static const int MIN_HEIGHT = 32;
-    static const int MAX_WIDTH = 4096;
-    static const int MAX_HEIGHT = 4096;
+    const int MIN_WIDTH = 32;
+    const int MIN_HEIGHT = 32;
+    const int MAX_WIDTH = 4096;
+    const int MAX_HEIGHT = 4096;
 
     CImg<unsigned char> currentImage;
     CImgDisplay *currentDisplay;
-
+    bool isFileExists(const std::string &path)
+    {
+        std::ifstream file(path);
+        return file.good();
+    }
     void initializeEmptyImage()
     {
         this->currentImage = CImg<unsigned char>(DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_DEPTH, DEFAULT_CHANNELS, 255);
@@ -30,6 +34,7 @@ private:
         int width = this->currentImage.width();
         int height = this->currentImage.height();
         bool needResize = false;
+
         if (width < MIN_WIDTH || height < MIN_HEIGHT)
         {
             width = std::max(width, MIN_WIDTH);
@@ -39,17 +44,18 @@ private:
 
         if (width > MAX_WIDTH || height > MAX_HEIGHT)
         {
-            // giu ti le khi resize
             float ratio = std::min((float)MAX_WIDTH / width, (float)MAX_HEIGHT / height);
-            width = width * ratio;
-            height = height * ratio;
+            width = std::max(1, static_cast<int>(width * ratio));
+            height = std::max(1, static_cast<int>(height * ratio));
             needResize = true;
         }
+
         if (needResize)
         {
-            this->currentImage(width, height, -100, -100, 3);
+            this->currentImage.resize(width, height, currentImage.depth(), currentImage.spectrum(), 3);
         }
     }
+
     void showImage(std::string path, bool blocking = true)
     {
         try
@@ -134,12 +140,21 @@ public:
     {
         try
         {
-            this->currentImage.load(path.c_str());
-            showImage(("View" + path).c_str());
+            if (!isFileExists(path))
+            {
+                std::cerr << "File does not exist: " << path << std::endl;
+                return false;
+            }
+            // this->currentImage.assign(54,54,1,3);
+            initializeEmptyImage();
+            this->currentImage.load_bmp(path.c_str());
+            normalizeImageSize();
+            showImage(path.c_str());
             return true;
         }
         catch (const CImgException &e)
         {
+            std::cerr << "Path: " << path << std::endl;
             std::cerr << "Error loading image: " << e.what() << std::endl;
             return false;
         }
@@ -185,5 +200,5 @@ public:
 int main()
 {
     ImageHandler test;
-    test.readImage("D:\\ProgramingCPP\\Function\\Images\\Struct.bmp");
+    test.readImage("Images\\av.bmp");
 }
