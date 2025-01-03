@@ -6,7 +6,174 @@
 #include <set>
 #include <map>
 #include <unordered_map>
+#include <limits>
+#include <climits>
 using namespace std;
+
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+// nối và sort
+class MergeTwoListAndSort
+{
+public:
+    ListNode *merge(ListNode *l1, ListNode *l2)
+    {
+        if (!l1)
+            return l2;
+        if (!l2)
+            return l1;
+        ListNode *dmp = new ListNode();
+        dmp->next = l1;
+        ListNode *tmp = l1;
+        ListNode *prev = nullptr;
+        while (tmp)
+        {
+            prev = tmp;
+            tmp = tmp->next;
+        }
+        prev->next = l2;
+        return dmp->next;
+    }
+    int getMinVal(ListNode *all)
+    {
+        int minVal = INT_MAX;
+        ListNode *tmp = all;
+        while (tmp != nullptr)
+        {
+            if (tmp->val < minVal)
+            {
+                minVal = tmp->val;
+            }
+            tmp = tmp->next;
+        }
+        return minVal;
+    }
+    void delNode(ListNode *&all, int val)
+    {
+        ListNode *prev = nullptr;
+        ListNode *tmp = all;
+        while (tmp != nullptr)
+        {
+            if (tmp->val == val)
+            {
+                break;
+            }
+            prev = tmp;
+            tmp = tmp->next;
+        }
+        if (tmp != nullptr)
+        {
+            if (prev == nullptr)
+            {
+                all = all->next;
+            }
+            else
+            {
+                prev->next = tmp->next;
+            }
+            delete tmp;
+        }
+    }
+    ListNode *mergeAndSort(ListNode *l1, ListNode *l2)
+    {
+        ListNode *all = merge(l1, l2);
+
+        ListNode *newList = new ListNode();
+        ListNode *dump = newList;
+        while (all != nullptr)
+        {
+            int minVal = getMinVal(all);
+            newList->next = new ListNode(minVal);
+            newList = newList->next;
+            delNode(all, minVal);
+        }
+        return dump->next;
+    }
+    void show(ListNode *al)
+    {
+        ListNode *tmp = al;
+        while (tmp != nullptr)
+        {
+            cout << tmp->val << " ";
+            tmp = tmp->next;
+        }
+    }
+};
+
+class MergeTwoList
+{
+public:
+    void merge(ListNode *list1, ListNode *list2)
+    {
+        if (list1 != nullptr)
+            list1->next = list2;
+    }
+    ListNode *getPos(ListNode *list1, int val)
+    {
+        ListNode *list = list1;
+        while (list != nullptr)
+        {
+            if (list->next != nullptr && list->next->val > val)
+                return list->next;
+            list = list->next;
+        }
+        return list;
+    }
+    bool isRightPos(ListNode *list1, ListNode *list2, ListNode *dmp)
+    {
+        if (list1->val <= list2->val)
+        {
+            dmp = getPos(list1, list2->val);
+            return true;
+        }
+        else
+        {
+            dmp = getPos(list2, list1->val);
+            return false;
+        }
+    }
+    ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
+    {
+        // 1 2 4
+        // 1 3 4
+        if (!list1)
+            return list2;
+        if (!list2)
+            return list1;
+        bool *flg;
+        ListNode *dmp = nullptr;
+        ListNode *tmp1 = list1;
+        ListNode *tmp2 = list2;
+        flg = new bool(isRightPos(tmp1, tmp2, dmp));
+
+        while (true)
+        {
+        }
+
+        return dmp;
+    }
+    void deAllocate(ListNode *list1)
+    {
+        if (list1)
+        {
+            ListNode *tmp = list1;
+            list1 = list1->next;
+            delete tmp;
+        }
+    }
+    void recursiveDeAllocate(ListNode *list1)
+    {
+        while (list1)
+            deAllocate(list1);
+    }
+};
 
 // give a String then count length of the last words.
 class LenghOfLastWord
@@ -535,7 +702,7 @@ public:
 
 /*
     Marisa has n mushroom, mushroom i heavy A[i].
-    Today she wants to make a potion. She can use any number of mushrooms for a potion 
+    Today she wants to make a potion. She can use any number of mushrooms for a potion
     but the two mushrooms have too much difference in weight. k cannot be used in the same bottle.
     How many mushrooms can be used to make a potion? (Marisa wants her potion to be as strong as possible).
 */
@@ -561,7 +728,7 @@ public:
     // sliding window approach
     void silidingWindow()
     {
-        
+
         int max_mr = 1;
         int left = 0;
         // n is size
@@ -570,7 +737,7 @@ public:
             // sum weight of 2 mushrom not greater than k weight
             while (lineMatrix[right] - lineMatrix[left] > k)
             {
-                // because we sort it at input function 
+                // because we sort it at input function
                 // so we can plus one of left to increase el, end of condtion while
                 left++;
             }
@@ -696,54 +863,54 @@ public:
     }
 };
 
-int main()
+// int main()
 
-{
-    LIS lisTest;
-    lisTest.input();
-    lisTest.process();
+// {
+//     LIS lisTest;
+//     lisTest.input();
+//     lisTest.process();
 
-    // Travel hauntTraveling;
-    // hauntTraveling.input();
-    // cout<<hauntTraveling.process();
+//     // Travel hauntTraveling;
+//     // hauntTraveling.input();
+//     // cout<<hauntTraveling.process();
 
-    // int n, k;
-    // cin >> n >> k;
-    // MixPoison a(n, k);
-    // a.pushMatrix();
-    // a.silidingWindow();
+//     // int n, k;
+//     // cin >> n >> k;
+//     // MixPoison a(n, k);
+//     // a.pushMatrix();
+//     // a.silidingWindow();
 
-    // ExtendArray pp;
-    // pp.setN();
+//     // ExtendArray pp;
+//     // pp.setN();
 
-    // pp.inputArr(pp.getA());
-    // pp.inputArr(pp.getB());
-    // pp.mergeArr();
-    // pp.view();
-    // StringLongestPalindrome test;
-    // babad
-    // cout << test.longestPalindrome("aacabdkacaa") << endl;
-    // cout<<test.longestPalindrome("babad")<<endl;
-    // cout<<test.longestPalindrome("cbbd");
-    // string a = "babad";
-    // cout<<a.substr(0,a.find_last_of("b")+1);
-    // {
-    //     // LenghOfLastWord  a;
-    //     // string s = "   fly me   to   the moon";
-    //     // cout<<a.lengthOfLastWord(s);
-    //     TrianglePascal a;
-    //     a.generate(3);
-    //     // cout<<a.Combination(0,0);
-    //     // cout<<a.Combination(1,0);
-    //     PlusOne test;
-    //     vector<int> t;
-    //     t.push_back(9);
+//     // pp.inputArr(pp.getA());
+//     // pp.inputArr(pp.getB());
+//     // pp.mergeArr();
+//     // pp.view();
+//     // StringLongestPalindrome test;
+//     // babad
+//     // cout << test.longestPalindrome("aacabdkacaa") << endl;
+//     // cout<<test.longestPalindrome("babad")<<endl;
+//     // cout<<test.longestPalindrome("cbbd");
+//     // string a = "babad";
+//     // cout<<a.substr(0,a.find_last_of("b")+1);
+//     // {
+//     //     // LenghOfLastWord  a;
+//     //     // string s = "   fly me   to   the moon";
+//     //     // cout<<a.lengthOfLastWord(s);
+//     //     TrianglePascal a;
+//     //     a.generate(3);
+//     //     // cout<<a.Combination(0,0);
+//     //     // cout<<a.Combination(1,0);
+//     //     PlusOne test;
+//     //     vector<int> t;
+//     //     t.push_back(9);
 
-    //     vector<int> k = test.plusOne(t);
-    //     cout << k[0] << k[1];
-    // }
+//     //     vector<int> k = test.plusOne(t);
+//     //     cout << k[0] << k[1];
+//     // }
 
-    // vector<int> test = {4, 2, 2, 1, 1};
-    // SingleNumber a;
-    // cout << a.singleNumber(test);
-}
+//     // vector<int> test = {4, 2, 2, 1, 1};
+//     // SingleNumber a;
+//     // cout << a.singleNumber(test);
+// }
