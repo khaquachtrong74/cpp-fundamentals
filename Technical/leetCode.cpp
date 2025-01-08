@@ -10,6 +10,39 @@
 #include <climits>
 using namespace std;
 
+
+class CountPrefixAndSuffix {
+public:
+
+    bool isPrefix(const string& str1, const string& str2){
+        auto res = std::mismatch(str1.begin(), str1.end(), str2.begin());
+        return res.first == str1.end();
+    }
+
+    bool isSuffix(const string& str1, const string& str2){
+        int minLength = min(str1.length(), str2.length());
+        for(int i = 1; i <= minLength; ++i){
+            if(str1[str1.length()-i] != str2[str2.length()-i])
+                return false;
+        }
+        return true;
+    }
+    bool isPrefixAndSuffix(string& str1, string& str2){
+        return (isPrefix(str1, str2) && isSuffix(str1, str2));
+    }
+    
+    int countPrefixSuffixPairs(vector<string>& words) {
+        int count=0;
+        for(int i = 0; i < words.size()-1;i++){
+            for(int j = i+1; j < words.size(); j++){
+                if(isPrefixAndSuffix(words[i], words[j]))
+                    count++;
+            }
+        }
+        return count;
+    }
+};
+
 struct ListNode
 {
     int val;
