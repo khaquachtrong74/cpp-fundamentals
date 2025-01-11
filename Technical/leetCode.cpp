@@ -8,8 +8,32 @@
 #include <unordered_map>
 #include <limits>
 #include <climits>
+#include <bitset>
 using namespace std;
 
+
+/*
+    task is: check if string s has exacly k palindrome
+*/
+class CanConstruct {
+public:
+/*
+    The idea we will talk about is each Palindrome has <= 1 character odd
+    Using bitset<128>, we store and manipulate bits to track character frequencies.
+        we use flip to toggle bit at the index corresponding to the character 'c' which changes the state of the bit.
+        As a result -> we have a bit set to 1 represents a character with and odd frequency/
+
+        Finnaly, we check if the total number of bits set to 1 <= k. If true, string s can be constructed in to k palindrome
+
+*/  
+    bool canConstruct(string s, int k) {
+        // use bitset library
+        bitset<128> hm;
+        if(k > s.size()) return false;
+        for(char c : s) hm.flip(c);
+        return hm.count() <= k;
+    }
+};
 
 class CountPrefixAndSuffix {
 public:
