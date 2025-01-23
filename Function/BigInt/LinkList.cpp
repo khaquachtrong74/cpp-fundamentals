@@ -53,15 +53,17 @@ DoubleLinkList DoubleLinkList::operator+(const DoubleLinkList &other){
     Node* tailOther = other.getHead();
     DoubleLinkList result;
     
-    while(tailThis != nullptr){
+    while(tailThis || tailOther){
         //std::cout<<tailThis->val<<" + "<<tailOther->val<<std::endl;
-        int sum = tailThis->val + tailOther->val + redudant;
-        std::cout<<"SUM = "<< sum<<std::endl;
+        int valThis = (tailThis? tailThis->val : 0);
+        int valOther= (tailOther? tailOther->val : 0);
+        int sum = valThis + valOther + redudant;
+        // std::cout<<"SUM = "<< sum<<std::endl;
         redudant = sum / 10;
-        int t = (sum>=10? (sum-10) : sum);
+        int t = sum%10;
         result.addLastNode(t);
-        tailThis = tailThis->next;
-        tailOther = tailOther->next;
+        if(tailThis) tailThis = tailThis->next;
+        if(tailOther) tailOther = tailOther->next;
     }
     if(redudant != 0){
         result.addLastNode(redudant);
