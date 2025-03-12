@@ -11,7 +11,7 @@ Each section presents a task I have worked on:
   2. Practicing technical skills in the Technical folder.
   3. Learning about graphs.
   4. Exploring and creating various functions.
-  5. 
+  5. :)) Sorry I'm kind a lazy here! 
 ## Installation
 
 Clone my repository: https://github.com/khaquachtrong74/Programing_CPP.git
