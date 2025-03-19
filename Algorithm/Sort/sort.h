@@ -14,5 +14,8 @@ public:
 	void slection_sort(T arr[], int size, bool flg);
 	void bubble_sort(T arr[], int size, bool flg);
 	void interchange_sort(T arr[], int size, bool flg);	
+	// Medium
+	void merge_parts(T arr[],T temp[], int l, int m, int r);
+	void merge_sort(T arr[],T temp[], int l, int r);
 };
 #endif

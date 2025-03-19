@@ -53,4 +53,33 @@ void Sort<T>::interchange_sort(T *arr, int size, bool flg){
 	}
 }
 
-
+// Medium
+template<class T>
+void Sort<T>::merge_parts(T *arr, T *temp, int l, int m, int r){
+	int i = l;
+	int j = m+1;
+	int k = 0;
+	while(i <=m && j <=r){
+		int nextVal;
+		if(arr[i] < arr[j]) nextVal = arr[i++];
+		else nextVal = arr[j++];
+		temp[k++] = nextVal;
+	}
+	while(i <= m){
+		temp[k++] = arr[i++];
+	}
+	while(j <= r){
+		temp[k++] = arr[j++];
+	}
+	for(int i = 0; i < k; i++){
+		arr[l+i] = temp[i];
+	}
+}
+template<class T>
+void Sort<T>::merge_sort(T *arr, T *temp, int l, int r){
+	if(l >= r) return;
+	int mid = (l + r)/2;
+	merge_sort(arr, temp, l, mid);
+	merge_sort(arr, temp, mid+1, r);
+	merge_parts(arr, temp, l, mid, r);
+}
