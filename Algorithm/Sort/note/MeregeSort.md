@@ -5,7 +5,7 @@
 3. Sắp xếp 2 dãy con này
 4. Gộp 2 dãy có thứ tự thành dãy có kích thước ban đầu.
 
-## Triển khai với [Đệ quy]
+## Triển khai với [[Recursive]]
 
 Công đoạn ta chia ra làm 2 phần.
 

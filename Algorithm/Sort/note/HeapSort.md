@@ -1,6 +1,6 @@
 # Tính chất
 
-Là một kỹ thuật sắp xếp dựa trên cấu trúc dữ liệu [Binary_Heap]
+Là một kỹ thuật sắp xếp dựa trên cấu trúc dữ liệu [[BinaryHeap]]
 
 # Lý thuyết sắp xếp từ nhỏ tới lớn
 1. Tạo Max Heap chứa toàn bộ phần tử cần sắp xếp
