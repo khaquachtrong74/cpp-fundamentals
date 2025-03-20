@@ -75,12 +75,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "InterchangeSort.md",
+                "file": "Sort/note/Sort.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "InterchangeSort"
+              "title": "Sort"
             }
           }
         ],
@@ -141,8 +141,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "0d00430af4f64494",
@@ -231,7 +230,7 @@
   },
   "active": "69b8071956e65be8",
   "lastOpenFiles": [
-    "InterchangeSort.md",
+    "Sort/note/InterchangeSort.md",
     "Sort/note/Sort.md",
     "Sort/note/BubbleSort.md",
     "Sort/note/SelectionSort.md",
