@@ -49,10 +49,7 @@ return 0;
 echo """
 #!/bin/bash
 # Just base script to run file main
-g++ -c "$LOWER_CASE".cpp
-g++ -c main.cpp
-g++ main.o ""$LOWER_CASE"".o -o a.out
-rm *.o
+g++ *.cpp -o a.out
 """
 } >> run.bash
 chmod +x run.bash
