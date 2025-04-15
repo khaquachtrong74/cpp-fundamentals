@@ -32,7 +32,7 @@ void Sort<T>::slection_sort(T *arr, int size, bool flg){
 
 template<class T>
 void Sort<T>::bubble_sort(T *arr, int size, bool flg){
-	cout<<endl<<"Bubble sort"<<endl;
+	cout<<"Bubble sort"<<endl;
 	for(int i = 0; i < size -1; i++){
 		for(int j = size-1; j > i; j--){
 			if(flg^!(arr[j] < arr[j-1]))
@@ -43,7 +43,7 @@ void Sort<T>::bubble_sort(T *arr, int size, bool flg){
 
 template<class T>
 void Sort<T>::interchange_sort(T *arr, int size, bool flg){
-	cout<<endl<<"Interchange Sort"<<endl;
+	cout<<"Interchange Sort"<<endl;
 	for(int i = 0; i < size-1; i++){
 		for(int j = i+1; j < size; j++)
 		{
@@ -77,7 +77,10 @@ void Sort<T>::merge_parts(T *arr, T *temp, int l, int m, int r){
 }
 template<class T>
 void Sort<T>::merge_sort(T *arr, T *temp, int l, int r){
-	if(l >= r) return;
+	if(l >= r){
+		cout<<"Merge SOrt"<<endl;
+		return;
+	}
 	int mid = (l + r)/2;
 	merge_sort(arr, temp, l, mid);
 	merge_sort(arr, temp, mid+1, r);
