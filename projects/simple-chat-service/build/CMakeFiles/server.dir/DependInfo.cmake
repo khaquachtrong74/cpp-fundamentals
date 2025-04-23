@@ -10,10 +10,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/nullcore/cpp-fundamentals/projects/simple-chat-service/src/main_server.cpp" "CMakeFiles/server.dir/src/main_server.cpp.o" "gcc" "CMakeFiles/server.dir/src/main_server.cpp.o.d"
   "/home/nullcore/cpp-fundamentals/projects/simple-chat-service/src/server.cpp" "CMakeFiles/server.dir/src/server.cpp.o" "gcc" "CMakeFiles/server.dir/src/server.cpp.o.d"
+  "" "server" "gcc" "CMakeFiles/server.dir/link.d"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

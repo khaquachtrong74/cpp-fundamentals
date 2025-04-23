@@ -14,13 +14,6 @@ Client-Server behavior:
     Server: wait for clients, receive data, respond
     Client: connect to server, send message, get respone
 
+How two program can be connect each other? maybe thread
+And how they can get message?
 
-🎯 Goal → 🔧 Responsibility → 📁 File → 🧪 Test → 🔁 Reuse → 🧹 Clean → 🧠 Understand
-
-1. 🎯 Goal
-    1. Connect client to server
-    2. Server can handle request of client
-    3. Server can respone it
-2. 🔧 Responsibility
-    1. Server: respone, receive
-    2. Client: request

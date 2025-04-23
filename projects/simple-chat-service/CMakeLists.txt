@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyApp)
 set(CMAKE_CXX_STANDARD 17)          #model 
 include_directories(include)        #include files head *.h *.hpp
 # [CAN NOT] use those because in this project have 2 main function in src/
@@ -11,7 +10,6 @@ add_executable(server
     src/main_server.cpp
     src/server.cpp
 )
-
 add_executable(client
     src/main_client.cpp
     src/client.cpp
