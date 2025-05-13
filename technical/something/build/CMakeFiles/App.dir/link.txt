@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/App.dir/link.d CMakeFiles/App.dir/src/smthing.c.o -o App

@@ -1,0 +1,3 @@
+/home/nullcore/cpp-fundamentals/technical/something/build/CMakeFiles/App.dir
+/home/nullcore/cpp-fundamentals/technical/something/build/CMakeFiles/edit_cache.dir
+/home/nullcore/cpp-fundamentals/technical/something/build/CMakeFiles/rebuild_cache.dir

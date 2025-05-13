@@ -3,7 +3,6 @@
 #include<unistd.h> // in linux: sleep()
 // #include<windows.h> in windows: Sleep()
 using namespace std;
-
 void displayTime(int hours, int minutes, int seconds){
 	system("clear");
 	cout<<hours<<":"
@@ -11,7 +10,6 @@ void displayTime(int hours, int minutes, int seconds){
 	<<seconds<<endl;
 }
 void runTime(int hour, int min, int sec){
-	//function count seconds
 	while(true){
 		sleep(1);
 		sec++;
