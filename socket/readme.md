@@ -29,3 +29,6 @@ When another computer receives the packet, the hardware strips the Ethernet head
 - Short 2 bytes
 - Long 4 bytes
 - Big-Endian (Network Byte Order), Little-Endian
+
+[Protocol Numbers](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
+

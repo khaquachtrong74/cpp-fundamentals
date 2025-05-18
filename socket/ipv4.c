@@ -5,24 +5,17 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <arpa/inet.h>
-int main()
-{
-/*    struct sockaddr_in sa;
-    struct sockaddr_in6 sa6;
-    
-    sa.sin_addr.s_addr = INADDR_ANY;
-    sa6.sin6_addr = in6addr_any;*/
-    struct addrinfo* res = NULL;
-    getaddrinfo("google.com", "433", 0, &res);
-    struct addrinfo* i;
-    for(i=res; i!=NULL; i=i->ai_next)
-    {
-        char strv4[INET_ADDRSTRLEN];
-        char strv6[INET6_ADDRSTRLEN];
-        struct sockaddr_in *p = (struct sockaddr_in *)i->ai_addr;
-        printf("%s\n", inet_ntop(AF_INET, &p->sin_addr, strv4, sizeof(strv4)));
-        struct sockaddr_in6 *p6 = (struct sockaddr_in6 *)i->ai_addr;
-        printf("%s\n", inet_ntop(AF_INET6, &p6->sin6_addr, strv6, sizeof(strv6)));
+int main(){
+    struct addrinfo hints = {0};
+    hints.ai_flags = 0;
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
+    struct addrinfo *res = NULL;
+    if(getaddrinfo("youtube.com", "433", &hints, &res) == 0){
+        printf("Something\n");
+        printf("sa_data: %s\n",res->ai_addr->sa_data);
+        printf("protocol: %d\n", res->ai_protocol);
+        printf("canonname: %s\n", res->ai_canonname);
     }
-    return 0;
 }
