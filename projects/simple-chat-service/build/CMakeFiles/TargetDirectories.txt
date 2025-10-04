@@ -1,4 +1,0 @@
-/home/nullcore/cpp-fundamentals/projects/simple-chat-service/build/CMakeFiles/server.dir
-/home/nullcore/cpp-fundamentals/projects/simple-chat-service/build/CMakeFiles/client.dir
-/home/nullcore/cpp-fundamentals/projects/simple-chat-service/build/CMakeFiles/edit_cache.dir
-/home/nullcore/cpp-fundamentals/projects/simple-chat-service/build/CMakeFiles/rebuild_cache.dir

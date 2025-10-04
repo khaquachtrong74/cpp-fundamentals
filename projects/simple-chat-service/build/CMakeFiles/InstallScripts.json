@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/nullcore/cpp-fundamentals/projects/simple-chat-service/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
